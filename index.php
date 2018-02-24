@@ -109,16 +109,15 @@ p{
 .h5{
 	color: #218838;
 }
-#login{
-    color: #1034A6;
-    margin-right: 4px;
-}
-#signup{
-    color:#33A5D6 ;
 
-}
 button{
     margin-bottom: 10px;
+}
+#login_link{
+    color: blue;
+}
+#signup_link{
+    color:blue;
 }
 
 
@@ -158,6 +157,7 @@ echo "<div class='alert alert-danger'>".$errs."</div>";
     <button type="submit" class="btn btn-success" value="submit">Signup</button>
   
 </form>
+<a id="signup_link"><b>Login</b>  </a>
 </div>
 
 <div class="login">
@@ -181,8 +181,9 @@ echo "<div class='alert alert-danger'>".$err."</div>";
   </div>
   <button  class="btn btn-success" type="submit">Login</button>
 </form>
+<a id="login_link"><b>Signup</b>  </a>
 </div>
-<span id="login"><b>login</b>  </span>/<span id="signup"><b>Signup</b></span>
+
 
 
 </div>
@@ -196,20 +197,19 @@ echo "<div class='alert alert-danger'>".$err."</div>";
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script type="text/javascript">
     	
-    	$("#login").click(function(){
-    		$(".signup").css("display","none");
-    		$(".login").css("display","block");
-            $("#login").css("color","#33A5D6");
-            $("#signup").css("color","#1034A6");
+    	$("#login_link").click(function(){
+    		$(".signup").toggle();
+    		$(".login").toggle();
+           
 
     	});
-    	$("#signup").click(function(){
-    		$(".login").css("display","none");
-    		$(".signup").css("display","block");
-             $("#login").css("color","#1034A6");
-            $("#signup").css("color","#33A5D6");
+        $("#signup_link").click(function(){
+            $(".signup").toggle();
+            $(".login").toggle();
+           
 
-    	});
+        });
+    	
 
     	$("#form_signup").submit(function(e){
     		var name=$("#name").val();
