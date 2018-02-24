@@ -70,7 +70,7 @@ if($result1=mysqli_query($link,$query1))
 <html>
 <head>
 
-	<title>My Dairy</title>
+	<title>My Diary</title>
 		<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -129,7 +129,7 @@ button{
 
 <body>
 <div class="container">
-<p class="h1" style="font-family:'Caveat', cursive;color:#218838 ;">My personal Dairy</p>
+<p class="h1" style="font-family:'Caveat', cursive;color:#218838 ;">My personal Diary</p>
 
 <div class="signup">
 <p class="h5">Signup</p>
