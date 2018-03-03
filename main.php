@@ -36,7 +36,7 @@ background-size: cover;
 .container{
   width: 400px;
   margin-top: 80px;
-  background-image:url("mosaic.jpg") ;
+  background-color: #F7F6AA;
   padding-top: 30px;
   padding-bottom: 30px;
   padding-right: 5px; 
@@ -69,16 +69,40 @@ width: 80px;
 height: 80px;
 }
 
+
+.modal[data-modal-color="green"] .modal-content {
+  background: #4caf50;
+}
+.modal[data-modal-color] {
+  color: #fff;
+}
+.modal[data-modal-color] .modal-footer {
+  background: rgba(0, 0, 0, 0.2);
+border-top: 1px solid green;
+}
+.modal[data-modal-color] .modal-header {
+  background: rgba(0, 0, 0, 0.2);
+border-bottom: 1px solid green;
+}
+
+
+
+
+
+
+
+
+
   </style>
 
 
 
 </head>
 <body>
-<div class="container">
+<div class="container bootstrap snippet">
 <div class="d-flex">
   <div class="mr-auto p-2"> <p class="h1"> Hello <?php echo " ".$_SESSION["name"]; ?></p></div>
-  <div class="p-2"><button class="btn btn-success">Edit profile</button></div>
+  <div class="p-2"><button id="edit_profile" class="btn btn-success">Edit profile</button></div>
   <div class="p-2"><button id="Signout" class="btn btn-success">Signout</button></div>
 </div>
 <div class="d-flex p-2"><p class="h3" style="color: red">Your Journals:</p></div>
@@ -161,6 +185,48 @@ while($row=mysqli_fetch_array($result2))
     </div>
   </div>
 </div>
+
+
+
+<div class="modal fade" data-modal-color="green" id="edit_profile_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="edit_profile_form">
+
+      <div class="form-group">
+    <label for="edit_name">Name</label>
+    <input type="text" class="form-control" id="edit_name" aria-describedby="emailHelp">
+    
+  </div>
+   <div class="form-group row">
+    <label for="edit_email" class="col-sm-2">Email</label>
+    <input type="text" style="color: white" readonly class="form-control-plaintext col-sm-10" value="" id="edit_email"> 
+    
+  </div>
+  <div class="form-group">
+    <label for="edit_password">Password</label>
+    <input type="text" class="form-control" id="edit_password">
+  </div>
+          
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" id="edit_profile_submit" class="btn btn-primary">Save changes</button>
+      </div></form>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 
@@ -252,6 +318,50 @@ xhttp.send();
   });
    
 
+$("#edit_profile").click(function()
+{
+$("#edit_profile_modal").modal('show');
+
+xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange=function(){
+if(this.readyState == 4 && this.status == 200){
+var content=this.responseText;
+var arrayValues=content.split("|");
+$("#edit_name").val(arrayValues[0]);
+$("#edit_email").attr('value',arrayValues[1]);
+$("#edit_password").val(arrayValues[2]);
+
+}
+
+};
+xhttp.open("GET", "edit_profile_get.php",true);
+xhttp.send();
+
+});
+
+
+$("#edit_profile_form").submit(function(){
+var name=$("#edit_name").val();
+var password=$("#edit_password").val();
+
+if(name==""||password=="")
+  alert("Empty fields!!");
+else{
+
+  xhttp= new XMLHttpRequest();
+  xhttp.onreadystatechange=function(){
+    if(this.readyState==4 && this.status == 200){
+    location.reload();
+
+    }
+
+  };
+  xhttp.open("GET","edit_profile_upload.php?name="+name+"&password="+password,true);
+  xhttp.send();
+}
+
+
+});
 
 
     </script>
