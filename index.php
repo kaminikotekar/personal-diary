@@ -81,6 +81,10 @@ if($result1=mysqli_query($link,$query1))
     <script src="jquery_ui_go/external/jquery/jquery.js" type="text/javascript"></script>
     <script src="jquery_ui_go/jquery-ui.js"></script>
 	<style type="text/css">
+            body, html {
+    height: 100%;
+}
+
 	html { 
 background: url(my_dairy_bck.jpg) no-repeat center center fixed; 
 -webkit-background-size: cover;
@@ -88,17 +92,16 @@ background: url(my_dairy_bck.jpg) no-repeat center center fixed;
 -o-background-size: cover;
 background-size: cover;
 }
-.container{
-	width: 450px;
-	margin-top: 100px;
-
-}
 body{
-	display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     background: none;
 }
+.container{
+	width: 450px;
+	}
+
 p{
 	text-align: center;
 	color: #28A745;
@@ -119,9 +122,6 @@ button{
 #signup_link{
     color:blue;
 }
-
-
-
 
 	</style>
 </head>

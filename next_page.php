@@ -18,6 +18,9 @@ session_start();
     <script src="jquery_ui_go/external/jquery/jquery.js" type="text/javascript"></script>
   <script src="jquery_ui_go/jquery-ui.js"></script>
   <style type="text/css">
+             body, html {
+    height: 100%;
+}
     
   .bg { 
 background: url(black_bg1.jpg) no-repeat center center fixed; 

@@ -24,8 +24,11 @@ die('Could not connect: ' . mysql_error());
     <script src="jquery_ui_go/external/jquery/jquery.js" type="text/javascript"></script>
   <script src="jquery_ui_go/jquery-ui.js"></script>
   <style type="text/css">
+      body, html {
+    height: 100%;
+}
       body{ 
-background: url(black_bg1.jpg) no-repeat center center fixed; 
+background: url(my_dairy_bck.jpg) no-repeat center center fixed; 
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
@@ -36,7 +39,7 @@ background-size: cover;
 .container{
   width: 400px;
   margin-top: 80px;
-  background-color: #F7F6AA;
+ background-color: rgba(255, 255, 255, 0.5);
   padding-top: 30px;
   padding-bottom: 30px;
   padding-right: 5px; 
